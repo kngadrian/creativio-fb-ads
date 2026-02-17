@@ -1,21 +1,107 @@
 <!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8" />
-<title>openai-image-gen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Creativio AI — Facebook Ad Creatives</title>
 <style>
   :root { color-scheme: dark; }
-  body { margin: 24px; font: 14px/1.4 ui-sans-serif, system-ui; background: #0b0f14; color: #e8edf2; }
-  h1 { font-size: 18px; margin: 0 0 16px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-  figure { margin: 0; padding: 12px; border: 1px solid #1e2a36; border-radius: 14px; background: #0f1620; }
-  img { width: 100%; height: auto; border-radius: 10px; display: block; }
-  figcaption { margin-top: 10px; color: #b7c2cc; }
-  code { color: #9cd1ff; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #0a0e13; color: #e0e6ec; padding: 24px; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .subtitle { color: #8a95a0; margin-bottom: 28px; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+  .card { border: 1px solid #1c2630; border-radius: 16px; background: #0f1620; overflow: hidden; transition: transform .15s; }
+  .card:hover { transform: translateY(-2px); }
+  .card img { width: 100%; height: auto; display: block; cursor: pointer; }
+  .card-body { padding: 16px; }
+  .card-body h2 { font-size: 15px; margin-bottom: 6px; color: #fff; }
+  .card-body .angle { font-size: 12px; color: #6b9fff; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+  .card-body p { font-size: 13px; color: #9aa5b0; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; margin-right: 6px; }
+  .badge-ai { background: #1a2a40; color: #6b9fff; }
+  .badge-orig { background: #1a3020; color: #6bff8a; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+  .tab { padding: 6px 14px; border-radius: 8px; border: 1px solid #1c2630; background: transparent; color: #8a95a0; cursor: pointer; font-size: 13px; }
+  .tab.active { background: #1a2a40; color: #6b9fff; border-color: #2a3a50; }
 </style>
-<h1>openai-image-gen</h1>
-<p>Output: <code>/data/.openclaw/workspace/creativio-fb-ads</code></p>
-<div class="grid">
-<figure>
-  <a href="001-facebook-ad-image-a-massive-grid-mosaic-.png"><img src="001-facebook-ad-image-a-massive-grid-mosaic-.png" loading="lazy" /></a>
-  <figcaption>Facebook ad image: a massive grid mosaic of 50+ different professional product photos filling the entire frame - cosmetics, gadgets, shoes, watches, supplements, candles, apparel, electronics, food packaging - every single photo is studio quality with different backgrounds and styles. In the center, a semi-transparent dark overlay badge reads '500+ e-commerce brands' and '1M+ photos generated' in gold text. The sheer volume and quality should be overwhelming. Modern Facebook ad design.</figcaption>
-</figure>
+</head>
+<body>
+<h1>Creativio AI — Facebook Ad Creatives</h1>
+<p class="subtitle">5 high-converting ad concepts across different angles & pain points</p>
+
+<div class="tabs">
+  <button class="tab active" onclick="showVersion('gemini')">AI Generated (Gemini)</button>
+  <button class="tab" onclick="showVersion('placeholder')">Placeholder Originals</button>
 </div>
+
+<div class="grid">
+
+  <div class="card">
+    <a href="ad1-before-after-gemini.png" target="_blank"><img class="img-gemini" src="ad1-before-after-gemini.png" loading="lazy" /></a>
+    <img class="img-placeholder" src="ad1-before-after.png" loading="lazy" style="display:none" />
+    <div class="card-body">
+      <div class="angle">Angle: Before/After Transformation</div>
+      <h2>"Stop Losing Sales to Bad Product Photos"</h2>
+      <p>Split-screen showing amateur iPhone photo vs. Creativio AI studio-quality output. Targets e-commerce sellers bleeding conversions from poor visuals.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="ad2-cost-comparison-gemini.png" target="_blank"><img class="img-gemini" src="ad2-cost-comparison-gemini.png" loading="lazy" /></a>
+    <img class="img-placeholder" src="ad2-cost-comparison.png" loading="lazy" style="display:none" />
+    <div class="card-body">
+      <div class="angle">Angle: Cost Savings</div>
+      <h2>"$2,500 Studio Shoot vs. $29/month"</h2>
+      <p>Side-by-side cost comparison. Professional photographer setup vs. Creativio AI generating the same quality instantly. Hits the budget objection head-on.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="ad3-speed-hook-gemini.png" target="_blank"><img class="img-gemini" src="ad3-speed-hook-gemini.png" loading="lazy" /></a>
+    <img class="img-placeholder" src="ad3-speed-hook.png" loading="lazy" style="display:none" />
+    <div class="card-body">
+      <div class="angle">Angle: Speed / Instant Results</div>
+      <h2>"500 Product Photos in 10 Minutes"</h2>
+      <p>Overwhelming grid of generated product photos showing volume capability. For sellers who need to list fast across multiple platforms.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="ad4-social-proof-gemini.png" target="_blank"><img class="img-gemini" src="ad4-social-proof-gemini.png" loading="lazy" /></a>
+    <img class="img-placeholder" src="ad4-social-proof.png" loading="lazy" style="display:none" />
+    <div class="card-body">
+      <div class="angle">Angle: Social Proof</div>
+      <h2>"Join 10,000+ E-Commerce Brands"</h2>
+      <p>Testimonial-style with conversion metrics. Before/after CTR improvement stats. Leverages FOMO and authority.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <a href="ad5-pain-point-gemini.png" target="_blank"><img class="img-gemini" src="ad5-pain-point-gemini.png" loading="lazy" /></a>
+    <img class="img-placeholder" src="ad5-pain-point.png" loading="lazy" style="display:none" />
+    <div class="card-body">
+      <div class="angle">Angle: Pain Point Agitation</div>
+      <h2>"Your Competitors Are Already Using AI"</h2>
+      <p>Fear-based hook showing competitor storefronts with polished AI imagery vs. yours with amateur shots. Urgency play.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showVersion(v) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  const gemini = v === 'gemini';
+  document.querySelectorAll('.img-gemini').forEach(i => i.style.display = gemini ? 'block' : 'none');
+  document.querySelectorAll('.img-placeholder').forEach(i => i.style.display = gemini ? 'none' : 'block');
+  // Update links
+  document.querySelectorAll('.card a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (gemini) a.setAttribute('href', href.replace('.png', '.png').replace(/-gemini/g, '') ? href : href);
+  });
+}
+</script>
+</body>
+</html>
