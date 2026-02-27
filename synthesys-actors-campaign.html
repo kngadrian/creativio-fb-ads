@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthesys Actors — Affiliate Campaign Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e2e8f0; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%); border-bottom: 2px solid #3b82f6; padding: 32px 40px; }
+  .header h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .header .sub { color: #94a3b8; font-size: 14px; }
+  .header .badge { display: inline-block; margin-top: 12px; background: #dc2626; color: #fff; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+  .section { margin-bottom: 40px; }
+  .section-title { font-size: 18px; font-weight: 700; color: #3b82f6; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1e3a5f; text-transform: uppercase; letter-spacing: 0.05em; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .card { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 10px; padding: 20px; }
+  .card h3 { font-size: 14px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+  .card .value { font-size: 22px; font-weight: 700; color: #fff; }
+  .card .detail { font-size: 13px; color: #64748b; margin-top: 4px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; padding: 10px 14px; background: #1a2744; color: #94a3b8; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 10px 14px; border-bottom: 1px solid #1e2a3a; color: #e2e8f0; }
+  tr:hover td { background: #1a2035; }
+  .badge-draft { background: #1e3a5f; color: #60a5fa; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+  .badge-approved { background: #0a2d1a; color: #34d399; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+  .email-card { background: #1a1f2e; border: 1px solid #2d3748; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+  .email-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #161b27; border-bottom: 1px solid #2d3748; cursor: pointer; user-select: none; }
+  .email-header:hover { background: #1a2035; }
+  .email-num { font-size: 12px; color: #64748b; font-weight: 700; margin-bottom: 2px; }
+  .email-title { font-size: 16px; font-weight: 600; color: #fff; }
+  .email-meta { font-size: 12px; color: #64748b; margin-top: 2px; }
+  .email-body { padding: 24px; display: none; }
+  .email-body.open { display: block; }
+  .variant { margin-bottom: 28px; }
+  .variant:last-child { margin-bottom: 0; }
+  .variant-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 4px 12px; border-radius: 4px; margin-bottom: 14px; display: inline-block; }
+  .variant-a { background: #1e3a5f; color: #60a5fa; }
+  .variant-b { background: #1a3a1e; color: #4ade80; }
+  .subj-block { margin-bottom: 14px; }
+  .subj-block h4 { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .subj-line { font-size: 14px; color: #e2e8f0; padding: 5px 0 5px 12px; border-left: 3px solid #3b82f6; margin-bottom: 4px; }
+  .subj-line.recommended { border-color: #10b981; color: #6ee7b7; font-weight: 600; }
+  .subj-line.recommended::after { content: ' ✓ recommended'; font-size: 11px; color: #10b981; font-weight: 400; margin-left: 6px; }
+  .email-text { font-family: 'Courier New', monospace; font-size: 13px; color: #cbd5e1; white-space: pre-wrap; background: #0f1117; border: 1px solid #2d3748; border-radius: 6px; padding: 18px 20px; line-height: 1.8; }
+  .audience-link { font-family: monospace; font-size: 12px; color: #3b82f6; background: #1a2744; padding: 3px 8px; border-radius: 4px; }
+  .timeline-item { display: flex; gap: 16px; margin-bottom: 14px; align-items: flex-start; }
+  .timeline-dot { width: 12px; height: 12px; border-radius: 50%; background: #3b82f6; margin-top: 5px; flex-shrink: 0; }
+  .timeline-dot.launch { background: #10b981; }
+  .timeline-dot.close { background: #ef4444; }
+  .timeline-dot.webinar { background: #f59e0b; }
+  .timeline-content .date { font-size: 13px; font-weight: 700; color: #fff; }
+  .timeline-content .desc { font-size: 13px; color: #64748b; }
+  .notice { background: #0a2d1a; border: 1px solid #065f46; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+  .notice strong { color: #34d399; }
+  .notice p { color: #6ee7b7; font-size: 14px; }
+  .funnel-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #1e2a3a; }
+  .funnel-row:last-child { border-bottom: none; }
+  .funnel-price { font-size: 18px; font-weight: 700; color: #10b981; min-width: 80px; }
+  .funnel-name { font-size: 14px; font-weight: 600; color: #fff; }
+  .funnel-desc { font-size: 13px; color: #64748b; }
+  .commission-tag { margin-left: auto; background: #0a2d1a; color: #34d399; font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+  .top-bar { background: #dc2626; color: white; text-align: center; padding: 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.03em; }
+  .toggle { float: right; color: #64748b; font-size: 18px; }
+  .divider { border: none; border-top: 1px solid #2d3748; margin: 20px 0; }
+  .email-index { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .email-index a { display: inline-block; padding: 6px 14px; background: #1a1f2e; border: 1px solid #2d3748; border-radius: 20px; font-size: 13px; color: #94a3b8; text-decoration: none; }
+  .email-index a:hover { background: #1e3a5f; color: #60a5fa; border-color: #3b82f6; }
+</style>
+<script>
+  function toggleEmail(id) {
+    var body = document.getElementById('body-' + id);
+    var icon = document.getElementById('icon-' + id);
+    if (body.classList.contains('open')) {
+      body.classList.remove('open');
+      icon.textContent = '▼';
+    } else {
+      body.classList.add('open');
+      icon.textContent = '▲';
+    }
+  }
+  function expandAll() {
+    document.querySelectorAll('.email-body').forEach(function(b) { b.classList.add('open'); });
+    document.querySelectorAll('.toggle').forEach(function(i) { i.textContent = '▲'; });
+  }
+  function collapseAll() {
+    document.querySelectorAll('.email-body').forEach(function(b) { b.classList.remove('open'); });
+    document.querySelectorAll('.toggle').forEach(function(i) { i.textContent = '▼'; });
+  }
+</script>
+</head>
+<body>
+
+<div class="top-bar">⚠️ REVIEW ONLY — NO EMAILS SENT — PENDING APPROVAL FROM ADRIAN</div>
+
+<div class="header">
+  <h1>🎬 Synthesys Actors — Affiliate Email Campaign</h1>
+  <div class="sub">Full campaign · 9 emails · 2 audience variants each · Written by SWIPE · Awaiting KIT scheduling</div>
+  <div class="badge">🔒 Draft — Do Not Send</div>
+</div>
+
+<div class="container">
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="section-title">Campaign Overview</div>
+    <div class="grid-3">
+      <div class="card"><h3>Launch Window</h3><div class="value">March 2–5</div><div class="detail">Cart opens March 2 @ 11AM ET<br>Closes March 5 @ 11:59PM ET</div></div>
+      <div class="card"><h3>Total Audience</h3><div class="value">~16,500+</div><div class="detail">CallFluent (6,051) · Hot Clickers (7,909)<br>Old Customers (2,587) · AI Signal</div></div>
+      <div class="card"><h3>Commission</h3><div class="value">50%</div><div class="detail">Entire funnel · FE + all OTOs<br>5% on recurring</div></div>
+      <div class="card"><h3>Total Emails</h3><div class="value">9 emails</div><div class="detail">2 variants each (18 bodies)<br>Pre-launch → launch → urgency close</div></div>
+      <div class="card"><h3>FE Price</h3><div class="value">$27 OT</div><div class="detail">Bundle: $167+ · Bump $47<br>OTO1 $97 · OTO2 $67 · OTO3 $66</div></div>
+      <div class="card"><h3>Status</h3><div class="value" style="color:#34d399">✅ Copy Ready</div><div class="detail">Awaiting Adrian approval<br>KIT will draft after approval</div></div>
+    </div>
+  </div>
+
+  <!-- AUDIENCE LINKS -->
+  <div class="section">
+    <div class="section-title">Audience → Affiliate Link Map</div>
+    <table>
+      <thead><tr><th>Audience / Tag</th><th>Size</th><th>Affiliate Link</th><th>Angle</th></tr></thead>
+      <tbody>
+        <tr><td><strong>CallFluent</strong></td><td>6,051</td><td><span class="audience-link">callfluent.com/SynthesysActors-b</span></td><td>AI voice → video funnel front-end. Perfect pipeline pair.</td></tr>
+        <tr><td><strong>Hot Clickers</strong></td><td>7,909</td><td><span class="audience-link">creativio.ai/synthesysActors-b</span></td><td>Big breakthrough — full video funnels with AI</td></tr>
+        <tr><td><strong>Old Customers</strong></td><td>2,587</td><td><span class="audience-link">creativio.ai/synthesysActors-b</span></td><td>AI images → video converts better. Level up.</td></tr>
+        <tr><td><strong>AI Signal</strong></td><td>varies</td><td><span class="audience-link">creativio.ai/synthesysActors-b</span></td><td>Big breakthrough — full video funnels with AI</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FUNNEL -->
+  <div class="section">
+    <div class="section-title">Product Funnel</div>
+    <div class="card">
+      <div class="funnel-row"><div><div class="funnel-price">$27 OT</div><div class="funnel-name">FE: Synthesys Actors Commercial</div><div class="funnel-desc">1,000 credits/mo · AI VSL Avatar · Reel Ads · 1,000 AI actors · 4 templates · Commercial rights</div></div><div class="commission-tag">50% = ~$13.50</div></div>
+      <div class="funnel-row"><div><div class="funnel-price">$47 OT</div><div class="funnel-name">Order Bump: Extra 3,000 Credits</div></div><div class="commission-tag">50% = ~$23.50</div></div>
+      <div class="funnel-row"><div><div class="funnel-price">$97 OT</div><div class="funnel-name">OTO1: Complete Access</div><div class="funnel-desc">UGC Edition · Talking actors · SORA/VEO/WAN 2.6 · Product Ads · Commercial Ads</div></div><div class="commission-tag">50% = ~$48.50</div></div>
+      <div class="funnel-row"><div><div class="funnel-price">$67 OT</div><div class="funnel-name">OTO2: Template Club</div><div class="funnel-desc">15+ templates per feature · New templates monthly</div></div><div class="commission-tag">50% = ~$33.50</div></div>
+      <div class="funnel-row"><div><div class="funnel-price">$66 OT</div><div class="funnel-name">OTO3: 10,000 Credit Booster (one-time)</div></div><div class="commission-tag">50% = ~$33</div></div>
+      <div class="funnel-row" style="border-top: 2px solid #3b82f6; margin-top:4px; padding-top:16px;"><div><div class="funnel-price" style="color:#f59e0b">$167+ OT</div><div class="funnel-name">Bundle: FE + OTO1 + OTO2</div><div class="funnel-desc">Best value · All features included · Optional 10K credit booster bump</div></div><div class="commission-tag" style="background:#2d2a0a;color:#fbbf24">50% = ~$83.50+</div></div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section">
+    <div class="section-title">Email Send Schedule</div>
+    <div class="card">
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="date">📧 Email #1 — Feb 28 (Sat) 10:00 AM ET</div><div class="desc">Pre-launch teaser / Big Breakthrough angle → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="date">📧 Email #2 — March 1 (Sun) 9:00 AM ET</div><div class="desc">Webinar is TONIGHT → register now → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot webinar"></div><div class="timeline-content"><div class="date">📧 Email #3 — March 1 (Sun) 5:00 PM ET</div><div class="desc">Webinar starts in 3 hours — urgency → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot webinar"></div><div class="timeline-content"><div class="date">🎙️ March 1 (Sun) 8:00 PM ET — LIVE Webinar #1</div><div class="desc">Todd Gross live presentation</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot webinar"></div><div class="timeline-content"><div class="date">🎙️ March 2 (Mon) 10:00 AM ET — LIVE Webinar #2</div><div class="desc">Second session for late registrants</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot launch"></div><div class="timeline-content"><div class="date">🚀 March 2 (Mon) 11:00 AM ET — CART OPENS</div><div class="desc">📧 Email #4 — Cart is live → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="date">📧 Email #5 — March 2 (Mon) 6:00 PM ET</div><div class="desc">Webinar replay + bundle angle → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="date">📧 Email #6 — March 3 (Tue) 10:00 AM ET</div><div class="desc">Feature benefit breakdown → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-content"><div class="date">📧 Email #7 — March 4 (Wed) 10:00 AM ET</div><div class="desc">Fence-sitter / objection crusher → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot close"></div><div class="timeline-content"><div class="date">📧 Email #8 — March 5 (Thu) 9:00 AM ET</div><div class="desc">Last day — closes tonight → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot close"></div><div class="timeline-content"><div class="date">📧 Email #9 — March 5 (Thu) 7:00 PM ET</div><div class="desc">⚠️ Final warning — 5 hours left → All audiences</div></div></div>
+      <div class="timeline-item"><div class="timeline-dot close"></div><div class="timeline-content"><div class="date">🔒 March 5 (Thu) 11:59 PM ET — CART CLOSES</div><div class="desc">Launch complete</div></div></div>
+    </div>
+  </div>
+
+  <!-- EMAILS -->
+  <div class="section">
+    <div class="section-title">Email Copy — 9 Emails · 2 Variants Each</div>
+
+    <div class="notice">
+      <strong>✅ All 9 emails written by SWIPE. Ready for review.</strong>
+      <p>Click each email to expand. Variant A = CallFluent link. Variant B = Creativio link (all other audiences). After approval, KIT will create Kit.com drafts. Nothing scheduled or sent yet.</p>
+    </div>
+
+    <div style="text-align:right; margin-bottom:16px;">
+      <button onclick="expandAll()" style="background:#1e3a5f;color:#60a5fa;border:1px solid #3b82f6;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;margin-right:8px;">Expand All</button>
+      <button onclick="collapseAll()" style="background:#1a1f2e;color:#94a3b8;border:1px solid #2d3748;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;">Collapse All</button>
+    </div>
+
+    <!-- EMAIL 1 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(1)">
+        <div>
+          <div class="email-num">EMAIL #1 · Feb 28 (Sat) 10:00 AM ET</div>
+          <div class="email-title">Pre-Launch Teaser — Big Breakthrough</div>
+          <div class="email-meta">Audience: All · Goal: Build anticipation before webinar</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-1">▼</span></div>
+      </div>
+      <div class="email-body" id="body-1">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">something is coming that pairs perfectly with callfluent</div>
+            <div class="subj-line">the missing piece in your ai call funnel</div>
+            <div class="subj-line">ai video funnels just became real (launches monday)</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+You've already got the AI voice side handled with CallFluent. Calls, follow-ups, conversations. All automated.
+
+But what about the step before the call? The part where someone sees a video ad, watches a short VSL, and decides to pick up the phone or book a meeting.
+
+That's the gap. And something is launching Monday that fills it.
+
+It's called Synthesys Actors, and it's the first AI system that creates full video funnels. Reel ads, video sales letters, product commercials, UGC-style content. All using the same consistent AI actor across every touchpoint.
+
+No filming. No editors. No actors. One AI system that handles the entire video side of your funnel.
+
+I'll have all the details for you when the cart opens on March 2. There's also a live training on March 1 where the creator (Todd Gross) walks through the whole thing.
+
+More soon.
+
+[First Name],
+Adrian Isfan
+
+P.S. If you're already using AI for calls, adding AI video to the front of that pipeline is the logical next move. This is the tool that makes it practical.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">your ai visuals are about to get a serious upgrade</div>
+            <div class="subj-line">static images aren't enough anymore (something is coming)</div>
+            <div class="subj-line">ai video funnels just became real (launches monday)</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+If you're creating AI visuals, you already know how powerful the image side of marketing has become. Studio-quality product shots, branded content, social graphics. All in minutes.
+
+But here's the thing. Video converts at a completely different level than static images. And until now, creating a full video funnel with AI was either impossible or looked terrible.
+
+That changes Monday.
+
+Something called Synthesys Actors is launching, and it's the first AI system that creates full video funnels. Reel ads, long-form video sales letters, product commercials, UGC-style content. All using one consistent AI actor from the first ad to the final close.
+
+No filming. No editors. No actors. Just AI that actually looks and sounds professional.
+
+I'll send you the full details when the cart opens March 2. There's also a live training on March 1 where Todd Gross (the creator) demos the whole system.
+
+More coming soon.
+
+[First Name],
+Adrian Isfan
+
+P.S. If your marketing is already AI-powered on the visual side, video funnels are the next level. This is the first tool I've seen that actually delivers on that.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 2 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(2)">
+        <div>
+          <div class="email-num">EMAIL #2 · March 1 (Sun) 9:00 AM ET</div>
+          <div class="email-title">Webinar is TONIGHT — Register Now</div>
+          <div class="email-meta">Audience: All · Goal: Drive webinar registrations</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-2">▼</span></div>
+      </div>
+      <div class="email-body" id="body-2">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">live training tomorrow night, full ai video funnels</div>
+            <div class="subj-line">free training tomorrow on the tool that pairs with callfluent</div>
+            <div class="subj-line">tomorrow 8pm et, the ai video system i mentioned</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Quick reminder. The live training I mentioned is tomorrow night at 8 PM ET.
+
+Todd Gross is walking through Synthesys Actors, the AI system that creates full video funnels. Reel ads, VSLs, product commercials, UGC content. All from one consistent AI actor.
+
+For CallFluent users, this is the front end of the funnel. Someone sees your video ad, watches the AI-powered VSL, then calls in. CallFluent handles the conversation from there. The whole pipeline runs on AI.
+
+The training covers how the system works, what you can build with it, and there's a live-only deal when it launches the next morning.
+
+Register here: https://callfluent.com/SynthesysActors-b
+
+Worth showing up for if you want the video side of your funnel handled without hiring anyone.
+
+[First Name],
+Adrian Isfan
+
+P.S. Cart opens March 2 at 11 AM ET. The FE is $27. But tomorrow's training is the best way to see what this actually does before you decide.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">live training tomorrow night, full ai video funnels</div>
+            <div class="subj-line">free training tomorrow, the ai video tool you need to see</div>
+            <div class="subj-line">tomorrow 8pm et, the system that turns ai into video funnels</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Quick reminder. The live training I mentioned is tomorrow night at 8 PM ET.
+
+Todd Gross is walking through Synthesys Actors, the first AI system that creates full video funnels. Reel ads, video sales letters, product commercials, UGC-style content. All using the same consistent AI actor across every touchpoint.
+
+If you're already using AI for images and visuals, this is the next step. Video converts at a different level than static content, and this is the first tool I've seen that makes full video funnels practical without a production team.
+
+The training covers how the system works, the different video types you can create, and there's a live-only deal when it launches the following morning.
+
+Register here: https://creativio.ai/synthesysActors-b
+
+Even if you're not sure yet, the training is free and worth the hour.
+
+[First Name],
+Adrian Isfan
+
+P.S. Cart opens March 2 at 11 AM ET. The front-end is $27. But seeing the demo live is the best way to decide if this fits your workflow.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 3 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(3)">
+        <div>
+          <div class="email-num">EMAIL #3 · March 1 (Sun) 5:00 PM ET</div>
+          <div class="email-title">Webinar Starts in 3 Hours — Urgency</div>
+          <div class="email-meta">Audience: All · Goal: Last push before webinar goes live</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-3">▼</span></div>
+      </div>
+      <div class="email-body" id="body-3">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">tonight at 8pm et, ai video funnels live demo</div>
+            <div class="subj-line">3 hours from now, the training starts</div>
+            <div class="subj-line">last chance to register, live at 8pm et tonight</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Just a heads up. The Synthesys Actors live training starts tonight at 8 PM ET. That's about 3 hours from now.
+
+Todd Gross is doing a full walkthrough of the system. How the AI actors work, how you build video funnels from Reel ads through VSLs, and how it all stays consistent with one AI actor.
+
+If you're running CallFluent, this is the video layer that feeds into your call system. Someone watches the AI-generated VSL, gets interested, calls in. Your CallFluent agent handles it from there.
+
+There's also a special offer only available on the live call.
+
+Save your spot: https://callfluent.com/SynthesysActors-b
+
+Cart officially opens tomorrow at 11 AM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. If you can't make it live, I'll send the replay. But the live-only deal won't be available after tonight.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">tonight at 8pm et, ai video funnels live demo</div>
+            <div class="subj-line">3 hours from now, the training starts</div>
+            <div class="subj-line">last chance to register, live at 8pm et tonight</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Just a heads up. The Synthesys Actors live training starts tonight at 8 PM ET. About 3 hours from now.
+
+Todd Gross is doing a full walkthrough. How the AI actors work, the different video types (Reel ads, VSLs, product commercials, UGC), and how one consistent actor carries through your entire funnel.
+
+This is the piece that turns AI-generated visuals into actual video campaigns that convert. Not one-off clips. Full funnels.
+
+There's a special offer only available on the live call.
+
+Save your spot: https://creativio.ai/synthesysActors-b
+
+Cart officially opens tomorrow at 11 AM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. Replay will be available if you miss it, but the live-only deal is tonight only.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 4 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(4)">
+        <div>
+          <div class="email-num">EMAIL #4 · March 2 (Mon) 11:00 AM ET</div>
+          <div class="email-title">🚀 CART IS OPEN — Launch Day</div>
+          <div class="email-meta">Audience: All · Goal: Drive immediate purchases at launch</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-4">▼</span></div>
+      </div>
+      <div class="email-body" id="body-4">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">synthesys actors is live, full ai video funnels for $27</div>
+            <div class="subj-line">cart just opened, the ai video tool that pairs with callfluent</div>
+            <div class="subj-line">it's live. ai video funnels start at $27.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Synthesys Actors just went live.
+
+This is the first AI system that creates full video funnels. Reel ads, long-form VSLs, product commercials, UGC content. All using one consistent AI actor that looks and sounds professional across every piece.
+
+The front-end is $27. For that you get the core Synthesys Actors platform with commercial rights.
+
+For CallFluent users, here's why this matters. You're already automating calls. This gives you the video layer that drives people to those calls. AI-generated Reel ads grab attention, the VSL builds interest, and CallFluent closes. End-to-end AI funnel.
+
+The bundle (FE + Complete Access + Template Club) is the better play if you want the full stack. It includes UGC personas, SORA/VEO integration, and the template library.
+
+Get access here: https://callfluent.com/SynthesysActors-b
+
+Cart closes March 5 at 11:59 PM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. The $27 price is launch-only. If you watched last night's training, you already saw what this does. If you missed it, replay link is coming later today.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">synthesys actors is live, full ai video funnels for $27</div>
+            <div class="subj-line">cart just opened, the ai video system you need to see</div>
+            <div class="subj-line">it's live. ai video funnels start at $27.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Synthesys Actors just went live.
+
+This is the first AI system that creates full video funnels. Reel ads, long-form VSLs with AI avatars, product commercials, UGC-style content. All using one consistent AI actor across every touchpoint.
+
+The front-end is $27. That gets you the core platform with commercial rights.
+
+Here's why this matters. Static images and text-based marketing can only take you so far. Video is where conversions actually happen. And until now, creating a full video funnel required actors, editors, and a production budget. Synthesys Actors replaces all of that with AI.
+
+The bundle (FE + Complete Access + Template Club) gives you the full stack including UGC personas, SORA/VEO integration, and the template library.
+
+Get access here: https://creativio.ai/synthesysActors-b
+
+Cart closes March 5 at 11:59 PM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. The $27 price is launch-only. If you saw last night's training, you know what this does. Replay link coming later today if you missed it.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 5 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(5)">
+        <div>
+          <div class="email-num">EMAIL #5 · March 2 (Mon) 6:00 PM ET</div>
+          <div class="email-title">Webinar Replay + Bundle Angle</div>
+          <div class="email-meta">Audience: All · Goal: Capture missed-webinar buyers with replay + bundle value</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-5">▼</span></div>
+      </div>
+      <div class="email-body" id="body-5">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">webinar replay is up, plus the bundle breakdown</div>
+            <div class="subj-line">missed last night? replay + the bundle deal explained</div>
+            <div class="subj-line">the synthesys actors replay and why the bundle matters</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+If you missed last night's training, the replay is up. Worth watching even if you already grabbed the front-end.
+
+Todd walked through the full Synthesys Actors system. How the AI actors work, the different video types, and how you build a complete funnel from one platform.
+
+Quick note on the bundle. The FE ($27) gives you the core platform. But the bundle adds Complete Access (UGC personas, SORA/VEO integration, product ads), the Template Club, and a 10K credit booster.
+
+If you're thinking about using this alongside CallFluent, the bundle is the move. The UGC and product ad formats are what you'd use to drive traffic into your call funnels.
+
+Replay + access: https://callfluent.com/SynthesysActors-b
+
+Cart closes March 5 at 11:59 PM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. The bundle pricing is launch-only. After March 5, the individual OTOs cost significantly more than getting them together.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">webinar replay is up, plus the bundle breakdown</div>
+            <div class="subj-line">missed last night? replay + the bundle deal explained</div>
+            <div class="subj-line">the synthesys actors replay and why the bundle matters</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+If you missed last night's training, the replay is up. Worth watching even if you already grabbed the front-end.
+
+Todd walked through the full Synthesys Actors system. How the AI actors work, the different video types you can create, and how one consistent actor carries through your entire funnel.
+
+Quick note on the bundle. The FE ($27) gives you the core platform. But the bundle adds Complete Access (UGC personas, SORA/VEO integration, product ads), the Template Club, and a 10K credit booster.
+
+If you want the full video funnel capability, not just basic reel ads, the bundle is where the real value lives. UGC content and product commercials are the formats that actually move buyers through a funnel.
+
+Replay + access: https://creativio.ai/synthesysActors-b
+
+Cart closes March 5 at 11:59 PM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. Bundle pricing is launch-only. After March 5, the individual upgrades cost more than the whole package does right now.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 6 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(6)">
+        <div>
+          <div class="email-num">EMAIL #6 · March 3 (Tue) 10:00 AM ET</div>
+          <div class="email-title">Feature Benefit Breakdown</div>
+          <div class="email-meta">Audience: All · Goal: Educate undecided buyers on what's inside</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-6">▼</span></div>
+      </div>
+      <div class="email-body" id="body-6">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">what you actually get with synthesys actors (plain breakdown)</div>
+            <div class="subj-line">the 5 video types inside synthesys actors</div>
+            <div class="subj-line">here's what synthesys actors builds for you</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+A few people asked what exactly Synthesys Actors includes, so here's the plain breakdown.
+
+The core system creates 5 types of AI video:
+
+--> VSL AI Avatars: long-form video sales letters up to 120 seconds. A professional AI actor delivers your script. No teleprompter, no retakes.
+
+--> Reel Ads: short vertical videos for TikTok, Instagram Reels, YouTube Shorts. Scroll-stopping format.
+
+--> Product and Commercial Ads: benefit-driven product showcase videos.
+
+--> UGC Persona: authority-style UGC videos. Looks like a real person reviewing or recommending your product.
+
+--> Wild Effects: visual effects that make content stand out in feeds.
+
+The key part: one consistent AI actor across all of them. Your reel ad, your VSL, your product demo, all the same face and voice. That builds familiarity and trust through the funnel.
+
+For CallFluent users, the VSL-to-call pipeline is the big win. AI video warms them up, CallFluent closes.
+
+Access here: https://callfluent.com/SynthesysActors-b
+
+Cart closes March 5 at 11:59 PM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. The FE is $27. The bundle gets you all 5 video types plus templates and extra credits. Both are at launch pricing through March 5.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">what you actually get with synthesys actors (plain breakdown)</div>
+            <div class="subj-line">the 5 video types inside synthesys actors</div>
+            <div class="subj-line">here's what synthesys actors builds for you</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+A few people asked what exactly Synthesys Actors includes, so here's the plain breakdown.
+
+The core system creates 5 types of AI video:
+
+--> VSL AI Avatars: long-form video sales letters up to 120 seconds. A professional AI actor delivers your script. No teleprompter, no retakes.
+
+--> Reel Ads: short vertical videos for TikTok, Instagram Reels, YouTube Shorts. Scroll-stopping format.
+
+--> Product and Commercial Ads: benefit-driven product showcase videos.
+
+--> UGC Persona: authority-style UGC videos. Looks like a real person reviewing or recommending your product.
+
+--> Wild Effects: visual effects that make content stand out in feeds.
+
+The key part: one consistent AI actor across all of them. Your reel ad, your VSL, your product demo, all the same face and voice. That consistency builds trust through the funnel.
+
+If you're already using AI for images, this is the video layer. Static visuals get attention. Video converts.
+
+Access here: https://creativio.ai/synthesysActors-b
+
+Cart closes March 5 at 11:59 PM ET.
+
+[First Name],
+Adrian Isfan
+
+P.S. FE is $27. Bundle gives you all 5 video types plus templates and extra credits. Both at launch pricing through March 5.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 7 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(7)">
+        <div>
+          <div class="email-num">EMAIL #7 · March 4 (Wed) 10:00 AM ET</div>
+          <div class="email-title">Fence-Sitter / Objection Crusher</div>
+          <div class="email-meta">Audience: All · Goal: Convert the undecided with objection handling</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-7">▼</span></div>
+      </div>
+      <div class="email-body" id="body-7">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">still thinking about synthesys actors? read this.</div>
+            <div class="subj-line">the two questions everyone asks about synthesys actors</div>
+            <div class="subj-line">on the fence about ai video funnels? fair. here's the answer.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+If you've been looking at Synthesys Actors but haven't pulled the trigger, I get it. Two questions keep coming up.
+
+"Do the AI actors actually look real?"
+
+Yes. This isn't the robotic talking-head AI from two years ago. The actors have natural facial expressions, lip sync is accurate, and the voice quality is professional-grade. Todd Gross has been in the video AI space for years. This is his best work.
+
+"Is this just another AI video tool?"
+
+No. Most AI video tools create one-off clips. Synthesys Actors creates full video funnels. The same actor appears in your reel ad, your VSL, your product commercial, and your UGC content. That consistency is what makes funnels convert.
+
+For CallFluent users specifically: you already have the call side automated. This gives you the video front end that drives people to those calls. The whole pipeline becomes AI.
+
+Cart closes tomorrow at 11:59 PM ET.
+
+Access here: https://callfluent.com/SynthesysActors-b
+
+[First Name],
+Adrian Isfan
+
+P.S. The FE is $27. If it doesn't fit your workflow, no harm done. But the launch pricing disappears after tomorrow night.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">still thinking about synthesys actors? read this.</div>
+            <div class="subj-line">the two questions everyone asks about synthesys actors</div>
+            <div class="subj-line">on the fence about ai video funnels? fair. here's the answer.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+If you've been looking at Synthesys Actors but haven't pulled the trigger, I get it. Two questions keep coming up.
+
+"Do the AI actors actually look real?"
+
+Yes. This isn't the robotic talking-head AI from two years ago. The actors have natural facial expressions, lip sync is accurate, and the voice quality is professional-grade. Todd Gross has been building video AI tools for years. This is his best release.
+
+"Is this just another AI video tool?"
+
+No. Most AI video tools make one-off clips. Synthesys Actors creates full video funnels. One consistent actor carries through your reel ad, VSL, product commercial, and UGC content. That consistency is what makes funnels convert.
+
+If you're already using AI for visuals, this is the video upgrade. Static images get attention. Video funnels close sales.
+
+Cart closes tomorrow at 11:59 PM ET.
+
+Access here: https://creativio.ai/synthesysActors-b
+
+[First Name],
+Adrian Isfan
+
+P.S. The FE is $27. If it doesn't work for you, that's fine. But launch pricing disappears after tomorrow night.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 8 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(8)">
+        <div>
+          <div class="email-num">EMAIL #8 · March 5 (Thu) 9:00 AM ET</div>
+          <div class="email-title">Last Day — Closes Tonight</div>
+          <div class="email-meta">Audience: All · Goal: Drive final-day urgency purchases</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-8">▼</span></div>
+      </div>
+      <div class="email-body" id="body-8">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">synthesys actors closes tonight at 11:59pm et</div>
+            <div class="subj-line">last day for synthesys actors, launch pricing ends tonight</div>
+            <div class="subj-line">final day. ai video funnels at $27.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Synthesys Actors closes tonight at 11:59 PM ET. After that, launch pricing is gone.
+
+Quick recap on what this is: the first AI system that creates full video funnels. Reel ads, VSLs, product commercials, UGC content. One consistent AI actor across your entire funnel. No filming, no editors.
+
+The FE is $27. The bundle (FE + Complete Access + Template Club) is the full stack if you want UGC personas, SORA/VEO integration, and the template library.
+
+If you're running CallFluent, this is the video front end that drives people into your call funnels. AI video warms them up, your AI phone agent closes.
+
+This is the last email before the final warning tonight. If you've been considering it, today is the day.
+
+Access here: https://callfluent.com/SynthesysActors-b
+
+[First Name],
+Adrian Isfan
+
+P.S. The $27 launch price and bundle deal both expire tonight. After that, individual pricing applies and it costs significantly more.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">synthesys actors closes tonight at 11:59pm et</div>
+            <div class="subj-line">last day for synthesys actors, launch pricing ends tonight</div>
+            <div class="subj-line">final day. ai video funnels at $27.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Synthesys Actors closes tonight at 11:59 PM ET. After that, launch pricing is gone.
+
+Quick recap: the first AI system that creates full video funnels. Reel ads, VSLs with AI avatars, product commercials, UGC-style content. One consistent AI actor across everything. No filming, no editors, no production team.
+
+The FE is $27. The bundle (FE + Complete Access + Template Club) is the full stack with UGC personas, SORA/VEO integration, and the template library.
+
+If you've been relying on static images for marketing, video is where the conversions actually happen. This is the most practical AI video tool I've seen for building complete funnels.
+
+This is the last email before the final warning tonight. If you've been considering it, today is the day.
+
+Access here: https://creativio.ai/synthesysActors-b
+
+[First Name],
+Adrian Isfan
+
+P.S. The $27 launch price and bundle deal both expire tonight. Individual pricing after that costs significantly more.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 9 -->
+    <div class="email-card">
+      <div class="email-header" onclick="toggleEmail(9)">
+        <div>
+          <div class="email-num">EMAIL #9 · March 5 (Thu) 7:00 PM ET</div>
+          <div class="email-title">⚠️ Final Warning — 5 Hours Left</div>
+          <div class="email-meta">Audience: All · Goal: Final conversion push before midnight close</div>
+        </div>
+        <div><span class="badge-draft">DRAFT</span> <span class="toggle" id="icon-9">▼</span></div>
+      </div>
+      <div class="email-body" id="body-9">
+        <div class="variant">
+          <span class="variant-label variant-a">Variant A — CallFluent Audience</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">5 hours left. synthesys actors closes at midnight.</div>
+            <div class="subj-line">final call, synthesys actors is done after tonight</div>
+            <div class="subj-line">closing in 5 hours. this is it.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Synthesys Actors closes at 11:59 PM ET tonight. About 5 hours from now.
+
+Full AI video funnels. Reel ads, VSLs, product commercials, UGC. One consistent AI actor. $27 for the front-end. Bundle for the full stack.
+
+After tonight, launch pricing is gone.
+
+Get access: https://callfluent.com/SynthesysActors-b
+
+[First Name],
+Adrian Isfan
+
+P.S. This is the last email on this one. If you want it, now is the time.</div>
+        </div>
+        <hr class="divider">
+        <div class="variant">
+          <span class="variant-label variant-b">Variant B — Creativio / Hot Clickers / Old Customers / AI Signal</span>
+          <div class="subj-block">
+            <h4>Subject Line Options</h4>
+            <div class="subj-line recommended">5 hours left. synthesys actors closes at midnight.</div>
+            <div class="subj-line">final call, synthesys actors is done after tonight</div>
+            <div class="subj-line">closing in 5 hours. this is it.</div>
+          </div>
+          <div class="email-text">Hey {{ subscriber.first_name | default: 'there' }},
+
+Synthesys Actors closes at 11:59 PM ET tonight. About 5 hours from now.
+
+Full AI video funnels. Reel ads, VSLs, product commercials, UGC. One consistent AI actor. $27 for the front-end. Bundle for the full stack.
+
+After tonight, launch pricing is gone.
+
+Get access: https://creativio.ai/synthesysActors-b
+
+[First Name],
+Adrian Isfan
+
+P.S. This is the last email on this one. If you want it, now is the time.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KIT BROADCAST IDs -->
+  <div class="section">
+    <div class="section-title">Kit.com Drafts — 18 Broadcasts Created ✅</div>
+
+    <div class="notice" style="background:#0a1a2d; border-color:#1e3a5f;">
+      <strong style="color:#60a5fa;">✅ All 18 drafts in Kit.com. Nothing scheduled. Nothing sent.</strong>
+      <p style="color:#94a3b8;">Template: Text Only Classic (ID: 1956202) · Targeting applied · Intended send times in each broadcast description</p>
+    </div>
+
+    <div class="notice" style="background:#2d1a0a; border-color:#92400e; margin-bottom:16px;">
+      <strong style="color:#fbbf24;">⚠️ 3 Manual Steps Required in Kit.com UI Before Any Email Can Go Live:</strong>
+      <p style="color:#d97706; margin-top:8px;">1. <strong>Set send times</strong> — go to each broadcast, check the description for the intended send time, and set it. 18 broadcasts to schedule.</p>
+      <p style="color:#d97706; margin-top:6px;">2. <strong>Add exclusion tags</strong> — manually add COLD subscribers + Bad Email exclusions to each broadcast (API can't do this).</p>
+      <p style="color:#d97706; margin-top:6px;">3. <strong>Preview each email</strong> — quick sanity check that the links and formatting look right before activating.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Broadcast ID</th><th>Variant</th><th>Email #</th><th>Subject</th><th>Send Time (ET)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>23103578</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#1</td><td>something is coming that pairs perfectly with callfluent</td><td>Feb 28 · 10:00 AM</td></tr>
+        <tr><td><code>23103579</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#1</td><td>your ai visuals are about to get a serious upgrade</td><td>Feb 28 · 10:00 AM</td></tr>
+        <tr><td><code>23103580</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#2</td><td>live training tomorrow night, full ai video funnels</td><td>Mar 1 · 9:00 AM</td></tr>
+        <tr><td><code>23103582</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#2</td><td>live training tomorrow night, full ai video funnels</td><td>Mar 1 · 9:00 AM</td></tr>
+        <tr><td><code>23103583</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#3</td><td>tonight at 8pm et, ai video funnels live demo</td><td>Mar 1 · 5:00 PM</td></tr>
+        <tr><td><code>23103584</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#3</td><td>tonight at 8pm et, ai video funnels live demo</td><td>Mar 1 · 5:00 PM</td></tr>
+        <tr><td><code>23103585</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#4</td><td>synthesys actors is live, full ai video funnels for $27</td><td>Mar 2 · 11:00 AM</td></tr>
+        <tr><td><code>23103586</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#4</td><td>synthesys actors is live, full ai video funnels for $27</td><td>Mar 2 · 11:00 AM</td></tr>
+        <tr><td><code>23103587</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#5</td><td>webinar replay is up, plus the bundle breakdown</td><td>Mar 2 · 6:00 PM</td></tr>
+        <tr><td><code>23103588</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#5</td><td>webinar replay is up, plus the bundle breakdown</td><td>Mar 2 · 6:00 PM</td></tr>
+        <tr><td><code>23103589</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#6</td><td>what you actually get with synthesys actors (plain breakdown)</td><td>Mar 3 · 10:00 AM</td></tr>
+        <tr><td><code>23103590</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#6</td><td>what you actually get with synthesys actors (plain breakdown)</td><td>Mar 3 · 10:00 AM</td></tr>
+        <tr><td><code>23103592</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#7</td><td>still thinking about synthesys actors? read this.</td><td>Mar 4 · 10:00 AM</td></tr>
+        <tr><td><code>23103593</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#7</td><td>still thinking about synthesys actors? read this.</td><td>Mar 4 · 10:00 AM</td></tr>
+        <tr><td><code>23103594</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#8</td><td>synthesys actors closes tonight at 11:59pm et</td><td>Mar 5 · 9:00 AM</td></tr>
+        <tr><td><code>23103595</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#8</td><td>synthesys actors closes tonight at 11:59pm et</td><td>Mar 5 · 9:00 AM</td></tr>
+        <tr><td><code>23103596</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#9</td><td>5 hours left. synthesys actors closes at midnight.</td><td>Mar 5 · 7:00 PM</td></tr>
+        <tr><td><code>23103598</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#9</td><td>5 hours left. synthesys actors closes at midnight.</td><td>Mar 5 · 7:00 PM</td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:16px; padding:14px 18px; background:#1a1f2e; border:1px solid #2d3748; border-radius:8px; font-size:13px; color:#94a3b8;">
+      <strong style="color:#fff;">Targeting applied:</strong><br>
+      Variant A → Segment 485216 (CallFluent Buyers ~6,051)<br>
+      Variant B → Tags: Hot Clickers (9142811) + Old Customers (5511051) + ai-signal (16164051)
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center; padding: 32px 0; color: #4a5568; font-size: 13px; border-top: 1px solid #1e2a3a;">
+    <p>Prepared by <strong style="color:#64748b">MAXWELL</strong> (Chief of Staff) · <strong style="color:#64748b">SWIPE</strong> (Copywriting) · <strong style="color:#64748b">KIT</strong> (Email Delivery)</p>
+    <p style="margin-top:6px;">Campaign files: <code style="color:#64748b">/root/.openclaw/workspace/campaigns/synthesys-actors/</code></p>
+    <p style="margin-top: 20px; font-size: 15px; font-weight: 700; color: #dc2626;">🔒 NO EMAILS SENT — AWAITING ADRIAN'S APPROVAL</p>
+    <p style="margin-top:8px; color:#64748b;">Once approved: tell MAXWELL → KIT creates Kit.com drafts with correct tags and schedule → you verify → we send.</p>
+  </div>
+
+</div>
+</body>
+</html>
