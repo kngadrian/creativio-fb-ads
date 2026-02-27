@@ -836,35 +836,39 @@ P.S. This is the last email on this one. If you want it, now is the time.</div>
     </div>
 
     <div class="notice" style="background:#2d1a0a; border-color:#92400e; margin-bottom:16px;">
-      <strong style="color:#fbbf24;">⚠️ 3 Manual Steps Required in Kit.com UI Before Any Email Can Go Live:</strong>
-      <p style="color:#d97706; margin-top:8px;">1. <strong>Set send times</strong> — go to each broadcast, check the description for the intended send time, and set it. 18 broadcasts to schedule.</p>
-      <p style="color:#d97706; margin-top:6px;">2. <strong>Add exclusion tags</strong> — manually add COLD subscribers + Bad Email exclusions to each broadcast (API can't do this).</p>
-      <p style="color:#d97706; margin-top:6px;">3. <strong>Preview each email</strong> — quick sanity check that the links and formatting look right before activating.</p>
+      <strong style="color:#fbbf24;">⚠️ Manual Steps Required in Kit.com UI Before Any Email Can Go Live:</strong>
+      <p style="color:#d97706; margin-top:10px;"><strong>1. Set send times</strong> — intended time is in each broadcast's description. Set it per the schedule above. 18 to do.</p>
+      <p style="color:#d97706; margin-top:8px;"><strong>2. Add exclusions to 17 broadcasts</strong> — Kit V4 API hard-limits to one filter group (can't layer inclusion + exclusion via API). Broadcast 23103578 already has it applied. The other 17 need it manually:<br><br>
+        In each broadcast → Recipients/Audience → Add filter group → <em>"Exclude subscribers matching ANY of:"</em><br>
+        &nbsp;&nbsp;• Tag: <strong>Remove - Bad Email</strong><br>
+        &nbsp;&nbsp;• Status: <strong>Cold subscribers</strong></p>
+      <p style="color:#d97706; margin-top:8px;"><strong>3. Note: broadcast #2B ID changed</strong> — 23103582 was accidentally deleted during testing and recreated as <strong>23103777</strong>. Same content, new ID. Roster below is updated.</p>
+      <p style="color:#d97706; margin-top:8px;"><strong>4. Quick preview check</strong> — confirm plain text + links look right before activating.</p>
     </div>
 
     <table>
       <thead>
-        <tr><th>Broadcast ID</th><th>Variant</th><th>Email #</th><th>Subject</th><th>Send Time (ET)</th></tr>
+        <tr><th>Broadcast ID</th><th>Variant</th><th>Email #</th><th>Subject</th><th>Send Time (ET)</th><th>Exclusions</th></tr>
       </thead>
       <tbody>
-        <tr><td><code>23103578</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#1</td><td>something is coming that pairs perfectly with callfluent</td><td>Feb 28 · 10:00 AM</td></tr>
-        <tr><td><code>23103579</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#1</td><td>your ai visuals are about to get a serious upgrade</td><td>Feb 28 · 10:00 AM</td></tr>
-        <tr><td><code>23103580</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#2</td><td>live training tomorrow night, full ai video funnels</td><td>Mar 1 · 9:00 AM</td></tr>
-        <tr><td><code>23103582</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#2</td><td>live training tomorrow night, full ai video funnels</td><td>Mar 1 · 9:00 AM</td></tr>
-        <tr><td><code>23103583</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#3</td><td>tonight at 8pm et, ai video funnels live demo</td><td>Mar 1 · 5:00 PM</td></tr>
-        <tr><td><code>23103584</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#3</td><td>tonight at 8pm et, ai video funnels live demo</td><td>Mar 1 · 5:00 PM</td></tr>
-        <tr><td><code>23103585</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#4</td><td>synthesys actors is live, full ai video funnels for $27</td><td>Mar 2 · 11:00 AM</td></tr>
-        <tr><td><code>23103586</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#4</td><td>synthesys actors is live, full ai video funnels for $27</td><td>Mar 2 · 11:00 AM</td></tr>
-        <tr><td><code>23103587</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#5</td><td>webinar replay is up, plus the bundle breakdown</td><td>Mar 2 · 6:00 PM</td></tr>
-        <tr><td><code>23103588</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#5</td><td>webinar replay is up, plus the bundle breakdown</td><td>Mar 2 · 6:00 PM</td></tr>
-        <tr><td><code>23103589</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#6</td><td>what you actually get with synthesys actors (plain breakdown)</td><td>Mar 3 · 10:00 AM</td></tr>
-        <tr><td><code>23103590</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#6</td><td>what you actually get with synthesys actors (plain breakdown)</td><td>Mar 3 · 10:00 AM</td></tr>
-        <tr><td><code>23103592</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#7</td><td>still thinking about synthesys actors? read this.</td><td>Mar 4 · 10:00 AM</td></tr>
-        <tr><td><code>23103593</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#7</td><td>still thinking about synthesys actors? read this.</td><td>Mar 4 · 10:00 AM</td></tr>
-        <tr><td><code>23103594</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#8</td><td>synthesys actors closes tonight at 11:59pm et</td><td>Mar 5 · 9:00 AM</td></tr>
-        <tr><td><code>23103595</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#8</td><td>synthesys actors closes tonight at 11:59pm et</td><td>Mar 5 · 9:00 AM</td></tr>
-        <tr><td><code>23103596</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#9</td><td>5 hours left. synthesys actors closes at midnight.</td><td>Mar 5 · 7:00 PM</td></tr>
-        <tr><td><code>23103598</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#9</td><td>5 hours left. synthesys actors closes at midnight.</td><td>Mar 5 · 7:00 PM</td></tr>
+        <tr><td><code>23103578</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#1</td><td>something is coming that pairs perfectly with callfluent</td><td>Feb 28 · 10:00 AM</td><td><span class="badge-approved">✅ Set</span></td></tr>
+        <tr><td><code>23103579</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#1</td><td>your ai visuals are about to get a serious upgrade</td><td>Feb 28 · 10:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103580</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#2</td><td>live training tomorrow night, full ai video funnels</td><td>Mar 1 · 9:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr style="background:#1a2035;"><td><code>23103777</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#2</td><td>live training tomorrow night, full ai video funnels</td><td>Mar 1 · 9:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103583</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#3</td><td>tonight at 8pm et, ai video funnels live demo</td><td>Mar 1 · 5:00 PM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103584</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#3</td><td>tonight at 8pm et, ai video funnels live demo</td><td>Mar 1 · 5:00 PM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103585</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#4</td><td>synthesys actors is live, full ai video funnels for $27</td><td>Mar 2 · 11:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103586</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#4</td><td>synthesys actors is live, full ai video funnels for $27</td><td>Mar 2 · 11:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103587</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#5</td><td>webinar replay is up, plus the bundle breakdown</td><td>Mar 2 · 6:00 PM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103588</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#5</td><td>webinar replay is up, plus the bundle breakdown</td><td>Mar 2 · 6:00 PM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103589</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#6</td><td>what you actually get with synthesys actors (plain breakdown)</td><td>Mar 3 · 10:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103590</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#6</td><td>what you actually get with synthesys actors (plain breakdown)</td><td>Mar 3 · 10:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103592</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#7</td><td>still thinking about synthesys actors? read this.</td><td>Mar 4 · 10:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103593</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#7</td><td>still thinking about synthesys actors? read this.</td><td>Mar 4 · 10:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103594</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#8</td><td>synthesys actors closes tonight at 11:59pm et</td><td>Mar 5 · 9:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103595</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#8</td><td>synthesys actors closes tonight at 11:59pm et</td><td>Mar 5 · 9:00 AM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103596</code></td><td><span class="variant-label variant-a" style="padding:2px 8px;">A — CallFluent</span></td><td>#9</td><td>5 hours left. synthesys actors closes at midnight.</td><td>Mar 5 · 7:00 PM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
+        <tr><td><code>23103598</code></td><td><span class="variant-label variant-b" style="padding:2px 8px;">B — Creativio</span></td><td>#9</td><td>5 hours left. synthesys actors closes at midnight.</td><td>Mar 5 · 7:00 PM</td><td><span class="badge-pending">⚠️ Manual</span></td></tr>
       </tbody>
     </table>
 
