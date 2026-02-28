@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAILSCOUT — scout@callfluent.com Intelligence Report · Feb 28, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0d14; color: #e2e8f0; line-height: 1.6; }
+  .topbar { background: #111827; border-bottom: 1px solid #1f2937; padding: 10px 24px; font-size: 12px; color: #6b7280; display: flex; justify-content: space-between; align-items: center; }
+  .topbar strong { color: #9ca3af; }
+  .header { background: linear-gradient(135deg, #0f1f3d 0%, #0a0d14 100%); border-bottom: 2px solid #1d4ed8; padding: 32px 40px; }
+  .header-row { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .header h1 { font-size: 26px; font-weight: 700; color: #fff; }
+  .header .meta { color: #6b7280; font-size: 13px; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+  .badge-scout { background: #1e3a5f; color: #60a5fa; }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 40px; }
+  .stat { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 18px; text-align: center; }
+  .stat .num { font-size: 32px; font-weight: 800; color: #fff; }
+  .stat .lbl { font-size: 12px; color: #6b7280; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .section-title { font-size: 13px; font-weight: 700; color: #4b5563; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid #1f2937; }
+  .opp-card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
+  .opp-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+  .big-client::before { background: #10b981; }
+  .lead::before { background: #3b82f6; }
+  .irrelevant::before { background: #374151; }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+  .card-cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .cat-big-client { color: #10b981; }
+  .cat-lead { color: #60a5fa; }
+  .cat-irrelevant { color: #4b5563; }
+  .card-name { font-size: 18px; font-weight: 700; color: #fff; }
+  .card-company { font-size: 13px; color: #9ca3af; margin-top: 2px; }
+  .confidence { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+  .conf-high { background: #064e3b; color: #34d399; }
+  .conf-medium { background: #1c2a6b; color: #818cf8; }
+  .conf-low { background: #1f2937; color: #9ca3af; }
+  .card-meta { display: flex; gap: 16px; margin-bottom: 14px; font-size: 13px; color: #6b7280; flex-wrap: wrap; }
+  .card-meta span { display: flex; align-items: center; gap: 4px; }
+  .card-summary { font-size: 14px; color: #d1d5db; margin-bottom: 14px; line-height: 1.7; }
+  .card-action { background: #0f172a; border: 1px solid #1e3a5f; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #93c5fd; }
+  .card-action strong { color: #60a5fa; }
+  .section { margin-bottom: 36px; }
+  .skip-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: #0f1117; border: 1px solid #1f2937; border-radius: 8px; font-size: 13px; color: #4b5563; margin-bottom: 8px; }
+  .footer { text-align: center; padding: 32px; color: #374151; font-size: 12px; border-top: 1px solid #111827; margin-top: 16px; }
+  @media(max-width:600px) { .summary-grid { grid-template-columns: repeat(2,1fr); } .card-header { flex-direction: column; gap: 10px; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>🔍 <strong>MAILSCOUT</strong> — scout@callfluent.com</span>
+  <span>Scan: Feb 28, 2026 · Labels: New Lead Booked + Customer Responses · 30 days</span>
+</div>
+
+<div class="header">
+  <div class="header-row">
+    <div class="badge badge-scout">Intelligence Report</div>
+  </div>
+  <h1>scout@callfluent.com — Opportunity Scan</h1>
+  <div class="meta">Jan 28 – Feb 28, 2026 · 5 emails processed · 4 opportunities identified</div>
+</div>
+
+<div class="container">
+
+  <!-- SUMMARY -->
+  <div class="summary-grid">
+    <div class="stat"><div class="num">5</div><div class="lbl">Emails Scanned</div></div>
+    <div class="stat"><div class="num" style="color:#10b981">4</div><div class="lbl">Opportunities</div></div>
+    <div class="stat"><div class="num" style="color:#f59e0b">1</div><div class="lbl">High Confidence</div></div>
+    <div class="stat"><div class="num" style="color:#6b7280">1</div><div class="lbl">Skipped</div></div>
+  </div>
+
+  <!-- BIG CLIENT -->
+  <div class="section">
+    <div class="section-title">🏢 Potential Big Client — 1 found</div>
+
+    <div class="opp-card big-client">
+      <div class="card-header">
+        <div>
+          <div class="card-cat cat-big-client">🏢 Potential Big Client</div>
+          <div class="card-name">Bhanu Shishodiya</div>
+          <div class="card-company">TruckX — IoT Fleet Management Platform</div>
+        </div>
+        <span class="confidence conf-high">● HIGH</span>
+      </div>
+      <div class="card-meta">
+        <span>📧 bhanu.shishodiya@truckx-iot.com</span>
+        <span>📅 Feb 19, 2026</span>
+        <span>📌 New Lead Booked</span>
+      </div>
+      <div class="card-meta">
+        <span>✉️ Subject: Re: Can $1.23/day replace a call center team?</span>
+      </div>
+      <div class="card-summary">
+        Responded directly to a CallFluent marketing email with a clear buying signal: <em>"I am interested in learning more about CallFluent AI. Could we book an appointment with you to discuss this further?"</em> TruckX is an IoT fleet management company — likely dealing with high volumes of driver/operator communications, customer service calls, or lead qualification. Enterprise fleet tech = significant call volume potential.
+      </div>
+      <div class="card-action"><strong>→ Action:</strong> Reply immediately and book a discovery call. Do not let this sit. Fleet/IoT companies can be high-volume enterprise accounts. Prioritize this week.</div>
+    </div>
+  </div>
+
+  <!-- LEADS -->
+  <div class="section">
+    <div class="section-title">👤 Leads &amp; Prospects — 3 found</div>
+
+    <div class="opp-card lead">
+      <div class="card-header">
+        <div>
+          <div class="card-cat cat-lead">👤 Lead / Prospect</div>
+          <div class="card-name">DWAINE BECK</div>
+          <div class="card-company">Legacy Bullion — Financial Education &amp; Precious Metals</div>
+        </div>
+        <span class="confidence conf-medium">● MEDIUM</span>
+      </div>
+      <div class="card-meta">
+        <span>📧 dcbeck11@sbcglobal.net</span>
+        <span>📅 Feb 14, 2026</span>
+        <span>📌 New Lead Booked</span>
+      </div>
+      <div class="card-meta">
+        <span>✉️ Subject: Re: I made this pdf for you Dwaine</span>
+      </div>
+      <div class="card-summary">
+        Engaged lead who received a fully custom CallFluent AI calling script built for his Legacy Bullion business — qualifying warm leads on precious metals and booking HubSpot appointments. He replied to the email thread, showing active engagement. Script is built; he just needs to activate. Use case: financial education sales with outbound AI calling.
+      </div>
+      <div class="card-action"><strong>→ Action:</strong> Follow up personally. The script is done — remove friction. Ask: "Ready to activate? Here's how to get started in the next 15 minutes."</div>
+    </div>
+
+    <div class="opp-card lead">
+      <div class="card-header">
+        <div>
+          <div class="card-cat cat-lead">👤 Lead / Prospect</div>
+          <div class="card-name">Juanfer Granda</div>
+          <div class="card-company">Insurance Broker — Life, A&amp;S, Travel, Critical Illness</div>
+        </div>
+        <span class="confidence conf-medium">● MEDIUM</span>
+      </div>
+      <div class="card-meta">
+        <span>📧 juanfer.experior@gmail.com</span>
+        <span>📅 Feb 14, 2026</span>
+        <span>📌 New Lead Booked</span>
+      </div>
+      <div class="card-meta">
+        <span>✉️ Subject: Re: I made this pdf for you Juan</span>
+      </div>
+      <div class="card-summary">
+        Engaged lead who received a custom CallFluent AI intake script for his insurance brokerage — handles Life, Accident &amp; Sickness, Travel, and Critical Illness products. Script books into HubSpot calendar or transfers live. Replied to the email thread. Strong use case: insurance intake is a natural fit for AI calling (high volume, repetitive qualification).
+      </div>
+      <div class="card-action"><strong>→ Action:</strong> Follow up now. Script is ready to deploy. Insurance brokers have high call volumes — move him to a trial or starter plan.</div>
+    </div>
+
+    <div class="opp-card lead">
+      <div class="card-header">
+        <div>
+          <div class="card-cat cat-lead">👤 Lead / Prospect (Agency Angle)</div>
+          <div class="card-name">Bryce Horo</div>
+          <div class="card-company">Aspiring AI Calling Agency</div>
+        </div>
+        <span class="confidence conf-low">● LOW</span>
+      </div>
+      <div class="card-meta">
+        <span>📧 brycehoro10@gmail.com</span>
+        <span>📅 Feb 8, 2026 (ticket auto-closed)</span>
+        <span>📌 New Lead Booked</span>
+      </div>
+      <div class="card-meta">
+        <span>✉️ Subject: Re: Quick question Bryce (reply?)</span>
+      </div>
+      <div class="card-summary">
+        Support ticket thread. Bryce expressed intent to "launch something predictable" — support sent the Agency Profit Accelerator PDF and the ticket auto-closed after no reply. He's showing agency/white-label intent rather than direct user intent. Cold now but warm-able with the right re-engagement message.
+      </div>
+      <div class="card-action"><strong>→ Action:</strong> Re-engage with a personal email. Agency angle — "Let's map out your launch plan on a call." Offer a quick 20-minute strategy session.</div>
+    </div>
+  </div>
+
+  <!-- SKIPPED -->
+  <div class="section">
+    <div class="section-title">❌ Skipped — Not Relevant</div>
+    <div class="skip-row">
+      <span>Tasha Whipp &lt;tasha@medicann.co.uk&gt; — "5 x new heidi accounts"</span>
+      <span>Misdirected email about Heidi Health clinical software. No CallFluent relevance.</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>🔍 MAILSCOUT · scout@callfluent.com · Scan: Feb 28, 2026</p>
+  <p style="margin-top:6px;">Next scan: on-demand or scheduled weekly · Extend to 60 days anytime</p>
+</div>
+
+</body>
+</html>
