@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAILSCOUT — Primary Tab Report · Feb 28, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0d14; color: #e2e8f0; line-height: 1.6; }
+  .topbar { background: #111827; border-bottom: 1px solid #1f2937; padding: 10px 24px; font-size: 12px; color: #6b7280; display: flex; justify-content: space-between; }
+  .topbar strong { color: #9ca3af; }
+  .header { background: linear-gradient(135deg, #0f1f3d 0%, #0a0d14 100%); border-bottom: 2px solid #1d4ed8; padding: 28px 40px; }
+  .header h1 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .header .meta { color: #6b7280; font-size: 13px; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 28px 20px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 32px; }
+  .stat { background: #111827; border: 1px solid #1f2937; border-radius: 8px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 26px; font-weight: 800; color: #fff; }
+  .stat .lbl { font-size: 11px; color: #6b7280; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .alert { background: #1a0a0a; border: 1px solid #7f1d1d; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; }
+  .alert p { color: #fca5a5; font-size: 14px; line-height: 1.6; }
+  .alert strong { color: #f87171; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 12px; font-weight: 700; color: #4b5563; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid #1f2937; display: flex; justify-content: space-between; }
+  .card { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 20px; margin-bottom: 12px; position: relative; overflow: hidden; }
+  .card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; }
+  .c-exit::before { background:#f59e0b; }
+  .c-partner::before { background:#8b5cf6; }
+  .c-bigclient::before { background:#10b981; }
+  .c-lead::before { background:#3b82f6; }
+  .card-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
+  .cat { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; margin-bottom:3px; }
+  .cat-exit { color:#f59e0b; } .cat-partner { color:#a78bfa; } .cat-bigclient { color:#10b981; } .cat-lead { color:#60a5fa; }
+  .name { font-size:17px; font-weight:700; color:#fff; }
+  .co { font-size:13px; color:#9ca3af; margin-top:1px; }
+  .conf { display:inline-flex; align-items:center; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; white-space:nowrap; }
+  .h { background:#064e3b; color:#34d399; }
+  .m { background:#1c1c6b; color:#818cf8; }
+  .l { background:#1f2937; color:#9ca3af; }
+  .meta { display:flex; gap:12px; font-size:12px; color:#6b7280; margin:8px 0; flex-wrap:wrap; }
+  .sum { font-size:14px; color:#d1d5db; margin-bottom:12px; line-height:1.7; }
+  .action { background:#0f172a; border:1px solid #1e3a5f; border-radius:6px; padding:9px 13px; font-size:13px; color:#93c5fd; }
+  .action strong { color:#60a5fa; }
+  .new-tag { display:inline-block; background:#1a0a2d; color:#c084fc; font-size:10px; font-weight:700; padding:1px 7px; border-radius:4px; margin-left:8px; vertical-align:middle; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th { text-align:left; padding:8px 12px; background:#111827; color:#6b7280; font-size:11px; text-transform:uppercase; letter-spacing:.05em; }
+  td { padding:9px 12px; border-bottom:1px solid #1a2030; color:#d1d5db; vertical-align:top; }
+  tr:hover td { background:#0f1520; }
+  .em { font-family:monospace; font-size:11px; color:#64748b; }
+  .b { display:inline-block; padding:2px 7px; border-radius:4px; font-size:10px; font-weight:700; }
+  .bh { background:#064e3b; color:#34d399; }
+  .bm { background:#1e1b4b; color:#818cf8; }
+  .bl { background:#1f2937; color:#9ca3af; }
+  .skip-row { display:flex; justify-content:space-between; padding:9px 14px; background:#0f1117; border:1px solid #1f2937; border-radius:6px; margin-bottom:6px; font-size:12px; color:#4b5563; gap:16px; }
+  .footer { text-align:center; padding:24px; color:#374151; font-size:12px; border-top:1px solid #111827; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>🔍 <strong>MAILSCOUT</strong> — scout@callfluent.com · Primary Tab</span>
+  <span>Feb 28, 2026 · 294 threads · Dec 29 2025 – Feb 28 2026</span>
+</div>
+
+<div class="header">
+  <h1>Primary Tab — Opportunity Intelligence Report</h1>
+  <div class="meta">294 primary threads scanned · 1 acquisition · 7 partnerships · 3 big clients · 100+ leads · Previous scan missed 289 threads</div>
+</div>
+
+<div class="container">
+
+  <div class="alert">
+    <p><strong>🚨 Immediate action needed on 2 items:</strong> (1) Solen Software Group acquisition inquiry — Adrian replied warmly but no meeting booked. (2) AppSumo partnership reconnect — Jan 9, now 50 days cold with no reply visible. Both need action today.</p>
+  </div>
+
+  <div class="summary-grid">
+    <div class="stat"><div class="num">294</div><div class="lbl">Threads</div></div>
+    <div class="stat"><div class="num" style="color:#f59e0b">1</div><div class="lbl">Exit / Acq.</div></div>
+    <div class="stat"><div class="num" style="color:#a78bfa">7</div><div class="lbl">Partnerships</div></div>
+    <div class="stat"><div class="num" style="color:#10b981">3</div><div class="lbl">Big Clients</div></div>
+    <div class="stat"><div class="num" style="color:#3b82f6">100+</div><div class="lbl">Leads</div></div>
+  </div>
+
+  <!-- ACQUISITION -->
+  <div class="section">
+    <div class="section-title"><span>🤝 Exit / Acquisition</span><span>1 found</span></div>
+    <div class="card c-exit">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-exit">🤝 Acquisition Inquiry</div>
+          <div class="name">Alex Spencer — Solen Software Group</div>
+          <div class="co">Founder & CEO · Permanent capital B2B SaaS acquirer · Utah, USA</div>
+        </div>
+        <span class="conf h">● HIGH</span>
+      </div>
+      <div class="meta">
+        <span>📧 a.spencer@soleninvestmentgroup.com</span>
+        <span>📅 Feb 26, 2026 · 2 messages</span>
+        <span>✉️ "Adrian - We'd like to buy CallFluent AI"</span>
+      </div>
+      <div class="sum">Alex reached out directly with an acquisition inquiry. Solen uses permanent long-term capital — they buy B2B SaaS and hold for decades, not for a flip. Explicit interest in preserving culture and product. <strong>Adrian already replied warmly</strong>, mentioned LinkedIn, and said he's happy to sit down. No meeting booked yet. Thread went quiet after Adrian's reply.</div>
+      <div class="action"><strong>→ Action:</strong> Book the calendar meeting this week before it goes cold. Even if not selling now, the relationship is worth having. Solen's permanent capital model is one of the more founder-friendly acquisition structures out there.</div>
+    </div>
+  </div>
+
+  <!-- PARTNERSHIPS -->
+  <div class="section">
+    <div class="section-title"><span>🔗 Partnerships</span><span>7 found</span></div>
+
+    <div class="card c-partner">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-partner">🔗 Partnership — Telecom Infrastructure <span class="new-tag">LIVE DEAL</span></div>
+          <div class="name">Aliyana Darwesh — Telnyx</div>
+          <div class="co">Business Development · Telnyx · Major Twilio alternative · Global VoIP/SIP</div>
+        </div>
+        <span class="conf h">● HIGH</span>
+      </div>
+      <div class="meta">
+        <span>📧 aliyana@telnyx.com + liaadarwesh@live.com (personal)</span>
+        <span>📅 Multiple Jan–Feb · Last: Feb 26</span>
+        <span>✉️ "Our chat this morning" + "thanks for the chat r.e. telnyx"</span>
+      </div>
+      <div class="sum">Active, live partnership negotiation. 4 calendar invites, 3 meetings scheduled (Feb 17, Feb 20, Feb 26). Aliyana shared full Telnyx developer docs and pricing post-meeting. <strong>Feb 26: Aliyana followed up from her personal email ("Our chat this morning")</strong> — strong signal this is a genuine business relationship, not just a sales pitch. Telnyx offers DID numbers, voice termination, global coverage as a Twilio replacement.</div>
+      <div class="action"><strong>→ Action:</strong> Follow up post-Feb 26 meeting. What are the next steps — integration, pricing agreement, pilot? This is actively moving and needs momentum.</div>
+    </div>
+
+    <div class="card c-partner">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-partner">🔗 Partnership — Distribution <span class="new-tag">50 DAYS COLD</span></div>
+          <div class="name">McKenna McCarthy — AppSumo</div>
+          <div class="co">Business Development Associate · AppSumo · 1M+ buyer marketplace</div>
+        </div>
+        <span class="conf h">● HIGH</span>
+      </div>
+      <div class="meta">
+        <span>📧 mmccarthy@appsumo.com</span>
+        <span>📅 Jan 9, 2026 · 3 messages</span>
+        <span>✉️ "AppSumo x CallFluent reconnect"</span>
+      </div>
+      <div class="sum">"Happy New Year! Is now a good time to revisit a partnership?" — AppSumo's BD team proactively reaching out to reconnect implies prior interest. AppSumo lifetime deals routinely drive 5–6 figures in revenue and massive subscriber acquisition. This email has been sitting for 50 days.</div>
+      <div class="action"><strong>→ Action:</strong> Reply to McKenna today. Apologize for the gap, express genuine interest. An AppSumo LTD for CallFluent could be a major acquisition spike.</div>
+    </div>
+
+    <div class="card c-partner">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-partner">🔗 Partnership — VoIP Infrastructure</div>
+          <div class="name">Vram Bastadjian + Marios Savva — DIDlogic</div>
+          <div class="co">Director of BD + Contact · DIDlogic · DID numbers + voice termination in 140 countries</div>
+        </div>
+        <span class="conf m">● MEDIUM</span>
+      </div>
+      <div class="meta">
+        <span>📧 v.bastadjian@didlogic.com / m.savva@didlogic-corp.com</span>
+        <span>📅 Feb 4 + Feb 26, 2026</span>
+        <span>✉️ "Voice agents" + "DIDlogic-Let's Work Together"</span>
+      </div>
+      <div class="sum">Two separate DIDlogic contacts reached out within the same month — Marios Savva on Feb 4 ("Voice agents") and Vram Bastadjian on Feb 26 ("Let's Work Together"). DIDlogic provides local DID numbers in 140 countries, improving call answer rates. Direct relevance to CallFluent clients doing international outreach. Two separate contacts = coordinated outreach, not random.</div>
+      <div class="action"><strong>→ Action:</strong> Book one call with both on it. Local numbers improve answer rates for AI calling agents — if their pricing works, this could be a native feature or integration.</div>
+    </div>
+
+    <div class="card c-partner">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-partner">🔗 Partnership — Audio AI SDK</div>
+          <div class="name">Justin Dorber — ai-coustics</div>
+          <div class="co">ai-coustics · Berlin · Audio noise suppression SDK for voice agents</div>
+        </div>
+        <span class="conf m">● MEDIUM</span>
+      </div>
+      <div class="meta">
+        <span>📧 justin.dorber@aicoustics.io</span>
+        <span>📅 Jan 15 – Jan 26, 2026 · 4 messages</span>
+        <span>✉️ "hello from ai-coustics"</span>
+      </div>
+      <div class="sum">Justin has persisted across 4 emails with a clear technical pitch: their "Quail STT" SDK cleans input audio before ASR, reducing transcription errors by 10–25% vs. Krisp (~30ms drop-in). They've offered a free SDK key. If it works, CallFluent's transcription quality improves without any user friction. They're seeing traction with voice agent teams in SF and Berlin.</div>
+      <div class="action"><strong>→ Action:</strong> Test the free SDK key they offered. Low-cost validation — if it improves accuracy, integrate. Good co-marketing story either way.</div>
+    </div>
+
+    <div class="card c-partner">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-partner">🔗 Partnership — LLM Routing Tech <span class="new-tag">NEW</span></div>
+          <div class="name">Aayush Shah — Pokant / UC Berkeley</div>
+          <div class="co">aayush.shah@berkeley.edu · Pokant · Smart LLM routing layer</div>
+        </div>
+        <span class="conf m">● MEDIUM</span>
+      </div>
+      <div class="meta">
+        <span>📅 Jan 26, 2026</span>
+        <span>✉️ "Pokant - Smart LLM routing for CallFluent AI"</span>
+      </div>
+      <div class="sum">Berkeley researcher pitching a smart LLM routing layer specifically for CallFluent AI — likely routes queries to the most cost-efficient model without quality loss. If it cuts LLM inference costs meaningfully, this is a margin play. Early stage but specific pitch.</div>
+      <div class="action"><strong>→ Action:</strong> Low-lift reply to understand what the cost savings look like. Could be interesting if it routes to cheaper models on simple call tasks.</div>
+    </div>
+
+    <div class="card c-partner">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-partner">🔗 Partnership — UAE Market Expansion <span class="new-tag">NEW</span></div>
+          <div class="name">Alice Lopez — Decisive Core BD</div>
+          <div class="co">alice@decisivecorebd.com · Business development / market entry firm</div>
+        </div>
+        <span class="conf m">● MEDIUM</span>
+      </div>
+      <div class="meta">
+        <span>📅 Feb 3, 2026 · 3 messages</span>
+        <span>✉️ "UAE setup package for Callfluent AI"</span>
+      </div>
+      <div class="sum">3-message thread specifically about setting up CallFluent AI's presence in the UAE — company formation, licensing, local setup. Could be a reseller / distribution play or a market entry facilitation service. UAE is a high-growth market for AI tools with strong enterprise demand.</div>
+      <div class="action"><strong>→ Action:</strong> Worth a short call to understand if this is a legitimate distribution/reseller setup vs. a generic business formation pitch. UAE expansion could be interesting.</div>
+    </div>
+
+    <div class="card c-partner">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-partner">🔗 Partnership — PR Agency</div>
+          <div class="name">Mark Tabera — Pathos Communications (LON:NEWS)</div>
+          <div class="co">PR Consultant · Listed UK PR firm</div>
+        </div>
+        <span class="conf l">● LOW</span>
+      </div>
+      <div class="meta">
+        <span>📧 mark@pathoscommunications.co.uk</span>
+        <span>📅 Jan 27 – Feb 14 · Multiple emails</span>
+        <span>✉️ "Looking forward to our call" / "We Couldn't Meet, Watch This Instead"</span>
+      </div>
+      <div class="sum">Booked then missed a meeting on Feb 6. Sent a video pitch instead and followed up. Pitching PR services for CallFluent. Listed firm (LON:NEWS) means some credibility. But they're selling to you, not buying from you.</div>
+      <div class="action"><strong>→ Action:</strong> Low priority. If media coverage is in the 2026 plan, watch the video. Otherwise park it.</div>
+    </div>
+  </div>
+
+  <!-- BIG CLIENTS -->
+  <div class="section">
+    <div class="section-title"><span>🏢 Potential Big Clients</span><span>3 found</span></div>
+
+    <div class="card c-bigclient">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-bigclient">🏢 Big Client — UK Financial Services</div>
+          <div class="name">Jane Hayde — The Timebank</div>
+          <div class="co">thetimebank.co.uk · Outsourced paraplanning firm · UK financial services</div>
+        </div>
+        <span class="conf h">● HIGH</span>
+      </div>
+      <div class="meta">
+        <span>📧 jane.hayde@thetimebank.co.uk</span>
+        <span>📅 Feb 6 + Feb 11, 2026</span>
+        <span>✉️ "Enquiry regarding Automated AI Calling for an Outsourced Paraplanning Firm"</span>
+      </div>
+      <div class="sum">Direct, specific enterprise inquiry — Jane explicitly asked about AI calling for an outsourced paraplanning business. Paraplanning firms manage high volumes of client communication for financial advisors. Two separate emails: first a marketing response (Feb 6), then a formal direct inquiry with job description-level specificity (Feb 11). High intent, enterprise-grade use case.</div>
+      <div class="action"><strong>→ Action:</strong> Book a discovery call with Jane this week. Financial services + high call volume + outsourced model = recurring enterprise revenue. Ask about call volume, compliance requirements, and current setup.</div>
+    </div>
+
+    <div class="card c-bigclient">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-bigclient">🏢 Big Client — IoT Fleet Tech</div>
+          <div class="name">Bhanu Shishodiya — TruckX</div>
+          <div class="co">bhanu.shishodiya@truckx-iot.com · IoT fleet management platform</div>
+        </div>
+        <span class="conf h">● HIGH</span>
+      </div>
+      <div class="meta">
+        <span>📅 Feb 19 + Feb 24, 2026</span>
+        <span>✉️ Two separate inbound replies within 5 days</span>
+      </div>
+      <div class="sum">Replied to two different CallFluent marketing emails within 5 days. Feb 19: explicitly requested a meeting. Feb 24: still engaging with follow-up emails. IoT fleet companies manage driver/operator communications at scale — high outbound call volume for logistics updates, customer notifications, and support.</div>
+      <div class="action"><strong>→ Action:</strong> Reply and send a calendar link. He asked for a meeting 9 days ago — still warm but won't stay that way.</div>
+    </div>
+
+    <div class="card c-bigclient">
+      <div class="card-top">
+        <div>
+          <div class="cat cat-bigclient">🏢 Big Client — Fitness / Franchise <span class="new-tag">NEW DETAIL</span></div>
+          <div class="name">Steve Patterson — Aspyrteam / Orangetheory Fitness</div>
+          <div class="co">spatterson@aspyrteam.com · Orangetheory Fitness connection</div>
+        </div>
+        <span class="conf m">● MEDIUM</span>
+      </div>
+      <div class="meta">
+        <span>📅 Jan 8 + Jan 13, 2026</span>
+        <span>✉️ Discovery call booked + "Reconnecting with Orangetheory Fitness"</span>
+      </div>
+      <div class="sum">Steve booked a discovery call Jan 8, then followed up Jan 13 explicitly mentioning Orangetheory Fitness — a 1,400+ location fitness franchise. If Aspyrteam is implementing CallFluent for Orangetheory franchises, the scale potential is massive: membership calls, reactivation campaigns, booking confirmations across hundreds of locations.</div>
+      <div class="action"><strong>→ Action:</strong> Follow up on the discovery call. If the Orangetheory angle is real, treat this as a franchise enterprise deal and escalate to a senior conversation.</div>
+    </div>
+  </div>
+
+  <!-- LEADS TABLE -->
+  <div class="section">
+    <div class="section-title"><span>👤 Leads & Prospects — Top 20 from Primary Tab</span><span>~100+ total respondents</span></div>
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Email</th><th>Context</th><th>Date</th><th>Conf.</th><th>Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Heath Perkins</strong></td><td class="em">heath@serenityglobalsolutions.com</td><td>Serenity Global Solutions</td><td>Feb 26</td><td><span class="b bh">HIGH</span></td><td>Freshest response — replied to blueprint email</td></tr>
+        <tr><td><strong>Robert Madsen</strong></td><td class="em">robert@calculate.com</td><td>calculate.com</td><td>Feb 25</td><td><span class="b bh">HIGH</span></td><td>Replied to "what about the leads?" — active signal</td></tr>
+        <tr><td><strong>Roland Lietz</strong></td><td class="em">prime.coretx@gmail.com</td><td>Active support thread</td><td>Feb 23</td><td><span class="b bh">HIGH</span></td><td>4-message thread — close to converting</td></tr>
+        <tr><td><strong>Manpreet Singh</strong></td><td class="em">msinghca9@yahoo.com</td><td>6-message thread</td><td>Feb 22</td><td><span class="b bh">HIGH</span></td><td>Most engaged lead in campaign — 6 messages</td></tr>
+        <tr><td><strong>Ramsay Cook</strong></td><td class="em">ramsay@ramsaycook.com</td><td>ramsaycook.com</td><td>Feb 21</td><td><span class="b bm">MED</span></td><td>Multiple threads across campaign emails</td></tr>
+        <tr><td><strong>Claudio Rizza</strong></td><td class="em">diventareliberi@gmail.com</td><td>4-message thread</td><td>Feb 16</td><td><span class="b bm">MED</span></td><td>Heavy engager — 4 messages in one thread</td></tr>
+        <tr><td><strong>Daniel Kosh</strong></td><td class="em">danielpkosh@katvalo.biz</td><td>katvalo.biz</td><td>Feb 16</td><td><span class="b bm">MED</span></td><td>"Adrian - online office question?" — direct approach</td></tr>
+        <tr><td><strong>Mark Halstead</strong></td><td class="em">mark.halstead@icumulus.ai</td><td>iCumulus.ai — AI company</td><td>Jan 12</td><td><span class="b bm">MED</span></td><td>AI company — reseller or heavy usage potential</td></tr>
+        <tr><td><strong>Jeff Kivett</strong></td><td class="em">jeff@mediafuel.net</td><td>MediaFuel</td><td>Feb 14</td><td><span class="b bm">MED</span></td><td>Media company — high call volume use case</td></tr>
+        <tr><td><strong>Shawn Kocab</strong></td><td class="em">shawn@alliancedmc.net</td><td>Alliance DMC</td><td>Feb 14</td><td><span class="b bm">MED</span></td><td>DMC / event company — sales call use case</td></tr>
+        <tr><td><strong>Peter Gowers</strong></td><td class="em">peter@uptown.net.au</td><td>uptown.net.au — Australia</td><td>Feb 15</td><td><span class="b bm">MED</span></td><td>3-message thread — Australian market, active</td></tr>
+        <tr><td><strong>Brian Jones</strong></td><td class="em">brian@inflectionpointdfw.com</td><td>Inflection Point DFW</td><td>Feb 14</td><td><span class="b bm">MED</span></td><td>Consulting firm — replied to quick question</td></tr>
+        <tr><td><strong>Leonard Lamarsh</strong></td><td class="em">leonard@goldcapitalfs.com</td><td>Gold Capital Financial Services</td><td>Feb 14</td><td><span class="b bm">MED</span></td><td>Finance firm — high outbound call volume</td></tr>
+        <tr><td><strong>Sundeep Vaish</strong></td><td class="em">sundeep.vaish@gmail.com</td><td>Multiple threads</td><td>Feb 15</td><td><span class="b bm">MED</span></td><td>Two separate threads — highly engaged</td></tr>
+        <tr><td><strong>Justin de Kruif</strong></td><td class="em">justink@teamnurtureflow.com</td><td>NurtureFlow</td><td>Feb 5</td><td><span class="b bm">MED</span></td><td>"Saw your ad" — inbound from ad, warm intent</td></tr>
+        <tr><td><strong>Xavier Barata</strong></td><td class="em">theking@kingofapp.com</td><td>KingOfApp — mobile platform</td><td>Feb 15</td><td><span class="b bm">MED</span></td><td>App platform with reseller/integration potential</td></tr>
+        <tr><td><strong>Carsten Lemche</strong></td><td class="em">carstenlemche@lemco-mobility.com</td><td>Lemco Mobility — transport</td><td>Feb 14</td><td><span class="b bm">MED</span></td><td>Transport company — logistics call use case</td></tr>
+        <tr><td><strong>Andy Beaumont</strong></td><td class="em">andy@digitalkaizen.co.uk</td><td>Digital Kaizen UK</td><td>Jan 13</td><td><span class="b bm">MED</span></td><td>UK digital agency — 4-message follow-up thread</td></tr>
+        <tr><td><strong>Lila Carrington</strong></td><td class="em">lilacarrington@talkingheadschannel.inf</td><td>Talking Heads Channel</td><td>Jan 26</td><td><span class="b bl">LOW</span></td><td>"Had a quick question about CallFluent" — media/content angle</td></tr>
+        <tr><td><strong>Bryce Horo</strong></td><td class="em">brycehoro10@gmail.com</td><td>Agency launch intent</td><td>Feb 15</td><td><span class="b bl">LOW</span></td><td>Multiple engagements — agency intent, gone cold</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:10px; font-size:12px; color:#4b5563;">The Feb 14 "quick question" + "blueprint" campaigns generated ~100 individual replies. Table shows top 20 by engagement signal. Full raw list available on request.</p>
+  </div>
+
+  <!-- SKIPPED -->
+  <div class="section">
+    <div class="section-title"><span>❌ Skipped — Noise / Not Relevant</span></div>
+    <div class="skip-row"><span>Cold SDR outreach (Elena, Olivia, Isla, Layla, Hallie) — 5 emails</span><span>Generic AI SDR pitches selling to CallFluent, not buying</span></div>
+    <div class="skip-row"><span>CIO Review Europe (Erin Cabrera, Jovie Mcclain)</span><span>Awards/recognition pitch — pay-to-play, not an opportunity</span></div>
+    <div class="skip-row"><span>7180 Srl — account deactivation + payment failure</span><span>Churning customer — ops issue, not an opportunity</span></div>
+    <div class="skip-row"><span>MD Tanvir — affiliate commission payout dispute</span><span>Operations issue, route to support</span></div>
+    <div class="skip-row"><span>Kempi Stores — CreativioAI support ticket in wrong inbox</span><span>Misdirected support ticket</span></div>
+    <div class="skip-row"><span>Adam Roth (i95growth.com) — "Application: e-commerce support manager"</span><span>Job application — route to HR</span></div>
+    <div class="skip-row"><span>Tasha Whipp (medicann.co.uk) — Heidi Health accounts</span><span>Misdirected email — unrelated</span></div>
+    <div class="skip-row"><span>ZeroBounce (×3), Paddle, OpenAI billing, AWS</span><span>Tool/vendor system emails</span></div>
+    <div class="skip-row"><span>Tina Tomasz — "Restaurant Owners list"</span><span>Selling data, not a customer</span></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>🔍 MAILSCOUT · Primary Tab · scout@callfluent.com · Feb 28, 2026</p>
+  <p style="margin-top:6px;">Next: Customer Responses label scan when ready · Run weekly to stay current</p>
+</div>
+</body>
+</html>
